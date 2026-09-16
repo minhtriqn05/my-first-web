@@ -1,0 +1,162 @@
+/* ===== Bảng màu: đổi ở đây là đổi cả trang ===== */
+:root {
+  --paper: #F5F8FB;      /* nền */
+  --ink: #1B2F4A;        /* chữ chính */
+  --muted: #5A6B80;      /* chữ phụ */
+  --rail: #C3D0DF;       /* đường ray, đường kẻ */
+  --signal: #2F6FB5;     /* màu "đã xong" */
+  --amber: #E0A11B;      /* chấm "bạn đang ở đây" */
+  --amber-text: #8A5A00; /* chữ màu hổ phách (đủ tương phản trên nền sáng) */
+}
+
+/* Tự đổi sang giao diện tối nếu máy em đang bật dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0F1B2B;
+    --ink: #E6EDF5;
+    --muted: #9AABBF;
+    --rail: #2E4460;
+    --signal: #7FB0E8;
+    --amber: #F2B93B;
+    --amber-text: #F2B93B;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.hero,
+main,
+.footer {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ===== Phần đầu trang ===== */
+.hero { padding-top: 5rem; padding-bottom: 3rem; }
+
+.hero-hello { margin: 0; color: var(--muted); font-weight: 500; }
+
+.hero h1 {
+  margin: 0.25rem 0 1rem;
+  font-size: clamp(2.5rem, 8vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero-intro { margin: 0; max-width: 34rem; color: var(--muted); }
+
+.hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+
+.hero-links a {
+  padding: 0.6rem 1.1rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hero-links a:first-child { background: var(--ink); color: var(--paper); }
+
+.hero-links a:hover {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--paper);
+}
+
+a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+
+/* ===== Các khối nội dung ===== */
+.block { padding: 2.5rem 0; }
+.block h2 { margin: 0 0 1.5rem; font-size: 1.5rem; }
+
+/* ===== Đường ray hành trình ===== */
+.track { list-style: none; margin: 0; padding: 0; }
+
+.station { position: relative; padding: 0 0 2rem 2.5rem; }
+
+/* thanh ray nối giữa các nhà ga */
+.station::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.6rem;
+  bottom: -0.6rem;
+  width: 4px;
+  background: var(--rail);
+}
+.station:last-child::before { display: none; }
+
+/* chấm nhà ga */
+.station::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 3px solid var(--rail);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.is-done::before { background: var(--signal); }
+.is-done::after { border-color: var(--signal); background: var(--signal); }
+
+.is-current::after {
+  border-color: var(--amber);
+  background: var(--amber);
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 0 0 rgba(224, 161, 27, 0.6); }
+  to   { box-shadow: 0 0 0 12px rgba(224, 161, 27, 0); }
+}
+
+.status { font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+.is-done .status { color: var(--signal); }
+.is-current .status { color: var(--amber-text); }
+
+.station h3 { margin: 0.1rem 0 0.25rem; font-size: 1.2rem; }
+.station p { margin: 0; color: var(--muted); }
+
+/* ===== Bộ công cụ ===== */
+.tools { margin: 0; }
+
+.tools div {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rail);
+}
+
+.tools dt { font-weight: 700; }
+.tools dd { margin: 0; color: var(--muted); }
+
+/* ===== Chân trang ===== */
+.footer { padding-top: 2rem; padding-bottom: 3rem; color: var(--muted); font-size: 0.9rem; }
+
+/* ===== Màn hình điện thoại ===== */
+@media (max-width: 520px) {
+  .hero { padding-top: 3rem; }
+  .tools div { grid-template-columns: 1fr; gap: 0.1rem; }
+}
+
+/* Tắt hiệu ứng nhấp nháy nếu người xem không muốn chuyển động */
+@media (prefers-reduced-motion: reduce) {
+  .is-current::after { animation: none; }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyễn Minh Trí | Web Application Development</title>
+  <meta name="description" content="Trang web tĩnh đầu tiên của mình, deploy trên Vercel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ĐỔI TÊN, LINK GITHUB, EMAIL CỦA EM Ở PHẦN NÀY -->
+  <header class="hero">
+    <p class="hero-hello">Xin chào, mình là</p>
+    <h1>Nguyễn Minh Trí</h1>
+    <p class="hero-intro">
+      Sinh viên môn Web Application Development. Đây là trang web tĩnh đầu tiên của mình,
+      viết bằng HTML và CSS, đưa lên mạng bằng Vercel.
+    </p>
+    <nav class="hero-links" aria-label="Liên hệ">
+      <a href="https://github.com/minhtriqn05">GitHub</a>
+      <a href="23560042@gm.uit.edu.vn">Gửi email</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hành trình 4 bài tập -->
+    <section class="block" aria-labelledby="journey-title">
+      <h2 id="journey-title">Hành trình bài tập</h2>
+      <ol class="track">
+        <li class="station is-done">
+          <span class="status">Đã xong</span>
+          <h3>Cài đặt môi trường</h3>
+          <p>VS Code, GitHub, Laragon, Node.js, MySQL, MongoDB và Chrome đã sẵn sàng.</p>
+        </li>
+        <li class="station is-current">
+          <span class="status">Bạn đang ở đây</span>
+          <h3>Trang web tĩnh trên Vercel</h3>
+          <p>Chính là trang này.</p>
+        </li>
+        <li class="station">
+          <span class="status">Sắp tới</span>
+          <h3>Hello World với React.js</h3>
+          <p>Deploy lên Vercel.</p>
+        </li>
+        <li class="station">
+          <span class="status">Sắp tới</span>
+          <h3>RESTful API với Node.js + Express</h3>
+          <p>Deploy lên Render.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Bộ công cụ của môn học -->
+    <section class="block" aria-labelledby="tools-title">
+      <h2 id="tools-title">Bộ công cụ</h2>
+      <dl class="tools">
+        <div><dt>Viết code</dt><dd>Visual Studio Code</dd></div>
+        <div><dt>Quản lý code</dt><dd>GitHub, Sourcetree</dd></div>
+        <div><dt>Môi trường local</dt><dd>Laragon, Node.js, PM2</dd></div>
+        <div><dt>Cơ sở dữ liệu</dt><dd>MySQL + Workbench, MongoDB + Compass</dd></div>
+        <div><dt>Kiểm thử</dt><dd>Google Chrome, Postman</dd></div>
+        <div><dt>Triển khai</dt><dd>Vercel, Render</dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Nguyễn Minh Trí. Triển khai trên Vercel.</p>
+  </footer>
+</body>
+</html>
